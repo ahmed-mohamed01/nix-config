@@ -3,19 +3,18 @@
 # https://github.com/nix-community/NixOS-WSL
 
 { config, lib, pkgs, ... }:
-########################################################################################
+
 {
   imports = [
-    # include NixOS-WSL modules
-    <nixos-wsl/modules>
+    <nixos-wsl/modules>    # include NixOS-WSL modules
     <home-manager/nixos>
-    #inputs.home-manager.nixModules.default
+
   ];
-#----- WSL settings ------------------------------------------------------------#
+#----- WSL settings -------------------------------------------------------------#
   wsl.enable = true;
   wsl.defaultUser = "nixos";
 
-#----- Applications to be installed systemwide  --------------------------------#
+#----- Applications to be installed systemwide  ---------------------------------#
   environment.systemPackages = with pkgs; [
   	wget
   	git
@@ -28,7 +27,6 @@
     rm-improved
     speedtest-cli
     
-
   ];
 #----- User settings ------------------------------------------------------------#
   programs.zsh.enable = true;    # Install ZSH so it cab be used as default shell

@@ -1,4 +1,5 @@
 { pkgs, config, ... }:
+
 { 
   programs.fd = {             # Enable fd and set defaults
   	enable = true;
@@ -35,7 +36,7 @@
   	enableZshIntegration = true;
   };
 
-#----- ZSH management ---------------------------------------------------------#
+#----- ZSH management ----------------------------------------------------------#
   programs.zsh = {
     enable = true;
     zplug = {
@@ -44,7 +45,8 @@
     		{ name = "zsh-users/zsh-autosuggestions"; }
     		{ name = "zdharma-continuum/fast-syntax-highlighting"; }
     		{ name = "Aloxaf/fzf-tab"; }
-    		{ name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }	
+    		{ name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
+
     	];
     };
     enableCompletion = true;
@@ -73,6 +75,7 @@
 
         '';
   };
+  
 #----- Environmental variables -------------------------------------------------#
   home.sessionVariables = {
     EDITOR = "micro";
@@ -80,7 +83,7 @@
     MICRO_TRUECOLOR=1;
   };
 
-#----- Dotfile management -------------------------------------------------------#
+#----- Dotfile management ------------------------------------------------------#
   home.file = {
     "~/.config/micro/colorschemes/catppuccin-mocha.micro".source = config.lib.file.mkOutOfStoreSymlink /modules/src/micro/catppuccin-mocha.micro;
   };

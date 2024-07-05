@@ -17,6 +17,7 @@
       lazydocker
       lazygit
       unzip
+      neofetch
 
     ];
 
