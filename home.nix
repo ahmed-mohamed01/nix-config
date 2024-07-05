@@ -87,7 +87,7 @@
         hs = "home-manager switch";
         c="clear";
         lsa="eza --icons -a -l";
-        #ssh = "ssh.exe";
+        ssh = "ssh.exe";
 
     };
     initExtra = ''
