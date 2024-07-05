@@ -2,10 +2,11 @@
 
 { 
   imports = [
-    modules/git.nix
-    modules/zsh.nix
+    modules/git.nix    # Enable git and set defaults
+    modules/zsh.nix      # Enable zsh and set defaults
+    modules/fonts.nix     # Enable nerd fonts
   ];
-  
+
   #----- Basic home settings --------------------------------------------------#
   home = {
     username = "nixos";
