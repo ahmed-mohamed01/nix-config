@@ -2,16 +2,16 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, ... }: 
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -23,17 +23,6 @@
           modules = [ ./home.nix ];
         };
       };
-      #nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      #  system = "x86_64-linux";
-      #  specialArgs = {inherit inputs;};
-      #  modules = [
-      #    ./configuration.nix
-      #    inputs.home-manager.nixosModules.default
-      #    nixos-wsl.nixosModules.default {
-      #      system.stateVersion = "24.05";
-      #      wsl.enable = true;
-      #    }
-      #  ];
     };
   
 }

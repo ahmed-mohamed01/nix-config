@@ -46,9 +46,6 @@
       enable = true;
       package = pkgs.nix-ld-rs;
      };
-    ## _1password = {
-    #  enable = true;
-    #  };
 
   };
   
@@ -58,9 +55,7 @@
       settings = {
         PermitRootLogin = "no";
         PasswordAuthentication = false;
-        #AuthorizedKeysCommand = "/usr/bin/1password-get-ssh-key";
         AllowUsers = [ "ahmed" "nixos" ];
-        #sshCommand = "ssh.exe";
       };
   };
   
