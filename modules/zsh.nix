@@ -49,10 +49,10 @@
     };
     enableCompletion = true;
     history = {
-          ignoreDups = true;
-          ignoreSpace = true;
-          save = 10000;
-          size = 10000;
+        ignoreDups = true;
+        ignoreSpace = true;
+        save = 10000;
+        size = 10000;
     };
     defaultKeymap = "emacs";
     #----- Aliases -------------------------------------------------------------#
@@ -66,10 +66,10 @@
 
     };
     initExtra = ''
-          [[ ! -f ${./src/zsh/.p10k.zsh} ]] || source ${./src/zsh/.p10k.zsh}
-          [[ ! -e op.exe ]] || alias ssh="ssh.exe"
-          bindkey '^p' history-search-backward
-          bindkey '^n' history-search-forward
+        [[ ! -f ${./src/zsh/.p10k.zsh} ]] || source ${./src/zsh/.p10k.zsh}
+        [[ ! -e op.exe ]] || alias ssh="ssh.exe"
+        bindkey '^p' history-search-backward
+        bindkey '^n' history-search-forward
 
         '';
   };

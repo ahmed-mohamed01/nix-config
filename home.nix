@@ -14,9 +14,10 @@
   #----- Installed programs ---------------------------------------------------#
     packages = with pkgs; [
       hello
+
     ];
 
   };
-  programs.home-manager.enable = true;
-  nixpkgs.config.allowUnfree = true;
+  programs.home-manager.enable = true;     # Let home-manager update itself.
+  nixpkgs.config.allowUnfree = true;      # Install closed source software.
 }

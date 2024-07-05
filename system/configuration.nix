@@ -26,6 +26,8 @@
     htop
     ctop
     rm-improved
+    speedtest-cli
+    
 
   ];
 #----- User settings ------------------------------------------------------------#
@@ -43,12 +45,12 @@
 #----- System services ----------------------------------------------------------#
   services = {
     openssh = {    # OpenSSH settings
-        enable = true;
-        settings = {
-          PermitRootLogin = "no";
-          PasswordAuthentication = false;
-          AllowUsers = [ "ahmed" "nixos" ];
-        };
+      enable = true;
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+        AllowUsers = [ "ahmed" "nixos" ];
+      };
       };
     tailscale.enable = true;    # Enable tailscale
   };
