@@ -35,7 +35,7 @@
   	enableZshIntegration = true;
   };
 
-## ZSH settings #######################################################################
+#----- ZSH management ---------------------------------------------------------#
   programs.zsh = {
     enable = true;
     zplug = {
@@ -55,7 +55,7 @@
           size = 10000;
     };
     defaultKeymap = "emacs";
-    #  Aliases  ##########################
+    #----- Aliases -------------------------------------------------------------#
     shellAliases = {
         lsd = "eza --icons --tree --dir-only --git-repos --only-dirs --level=3";
         update = "sudo nixos-rebuild switch";
@@ -66,21 +66,21 @@
 
     };
     initExtra = ''
-          [[ ! -f ${./modules/zsh/.p10k.zsh} ]] || source ${./modules/zsh/.p10k.zsh}
+          [[ ! -f ${./modules/src/zsh/.p10k.zsh} ]] || source ${./modules/src/zsh/.p10k.zsh}
           [[ ! -e op.exe ]] || alias ssh="ssh.exe"
           bindkey '^p' history-search-backward
           bindkey '^n' history-search-forward
 
         '';
   };
-## Environmental varialbles  ##########################################################
+#----- Environmental variables -------------------------------------------------#
   home.sessionVariables = {
     EDITOR = "micro";
     FZF_COMPLETION_TRIGGER= "==";
     MICRO_TRUECOLOR=1;
   };
 
-## Dot file Management  ###############################################################
+#----- Dotfile management -------------------------------------------------------#
   home.file = {
     "~/.config/micro/colorschemes/catppuccin-mocha.micro".source = config.lib.file.mkOutOfStoreSymlink /modules/src/micro/catppuccin-mocha.micro;
   };
