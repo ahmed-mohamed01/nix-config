@@ -14,6 +14,9 @@
   #----- Installed programs ---------------------------------------------------#
     packages = with pkgs; [
       hello
+      lazydocker
+      lazygit
+      unzip
 
     ];
 
