@@ -5,6 +5,7 @@
     modules/git.nix
     modules/zsh.nix
   ];
+  
   #----- Basic home settings --------------------------------------------------#
   home = {
     username = "nixos";
