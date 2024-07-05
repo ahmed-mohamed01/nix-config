@@ -73,11 +73,12 @@ in
     };
     # Settings to be added to the top of .zshrc
     initExtraFirst = ''
+      source ${pkgs.zinit}/share/zinit/zinit.zsh
     '';
     initExtraBeforeCompInit = ''
     '';
     initExtra = ''
-        source ${pkgs.zinit}/share/zinit/zinit.zsh
+        zinit cdreplay -q
         zinit ice depth=1; zinit light romkatv/powerlevel10k    # Install powerlevel10k
         zinit light zdharma-continuum/fast-syntax-highlighting
         zinit light zsh-users/zsh-completions
