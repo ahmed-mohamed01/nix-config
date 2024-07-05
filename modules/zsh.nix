@@ -66,7 +66,7 @@
 
     };
     initExtra = ''
-          [[ ! -f ${./modules/src/zsh/.p10k.zsh} ]] || source ${./modules/src/zsh/.p10k.zsh}
+          [[ ! -f ${./src/zsh/.p10k.zsh} ]] || source ${./src/zsh/.p10k.zsh}
           [[ ! -e op.exe ]] || alias ssh="ssh.exe"
           bindkey '^p' history-search-backward
           bindkey '^n' history-search-forward
