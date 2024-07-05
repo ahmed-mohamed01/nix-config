@@ -1,16 +1,13 @@
 { pkgs, config, ... }:
 
-let
-  ZINIT_HOME = "$HOME/.local/share/zinit/zinit.git";
-in
 { 
   programs.fd = {             # Enable fd and set defaults
   	enable = true;
   	hidden = true;
   };
-  programs.bat = {            # Enable bat and set defaults
-  	enable = true;
-  };
+  programs.bat.enable = true;
+  programs.direnv.enableZshIntegration = true;
+  
   programs.fzf = {            # Enable fzf and set defaults
   	enable = true;
   	enableZshIntegration = true;
@@ -38,7 +35,7 @@ in
   	enable = true;
   	enableZshIntegration = true;
   };
-  home.packages = [
+  home.packages = [          # Install zinit
     pkgs.zinit
   ];
 
@@ -73,7 +70,7 @@ in
     };
     # Settings to be added to the top of .zshrc
     initExtraFirst = ''
-      source ${pkgs.zinit}/share/zinit/zinit.zsh
+      source ${pkgs.zinit}/share/zinit/zinit.zsh  # ---> # Load zinit
     '';
     initExtraBeforeCompInit = ''
     '';

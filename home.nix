@@ -5,6 +5,7 @@
     modules/git.nix    # Enable git and set defaults
     modules/zsh.nix      # Enable zsh and set defaults
     modules/fonts.nix     # Enable nerd fonts
+    modules/direnv.nix    # Enable direnv and set defaults
   ];
 
   #----- Basic home settings --------------------------------------------------#
@@ -26,4 +27,5 @@
   };
   programs.home-manager.enable = true;     # Let home-manager update itself.
   nixpkgs.config.allowUnfree = true;      # Install closed source software.
+
 }
