@@ -28,6 +28,7 @@
     speedtest-cli
     
   ];
+  
 #----- User settings ------------------------------------------------------------#
   programs.zsh.enable = true;    # Install ZSH so it cab be used as default shell
   users.defaultUserShell = pkgs.zsh;   # Set ZSH as default shell
