@@ -2,17 +2,19 @@
 
 This is the NixOS config using Nix flakes and Home-manager
 
-### 1a. Install Nix package manager on Linux:
+### 1a. Install Nix package manager:
+On Linux:
 ```bash
 sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
-Install Nix package manager on WSL2:
+WSL2:
 ```bash
 sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
 ### 1b. Install NixOS
 
+On bare-metal, use the ISO and your favourite tool to create a bootable USB.
 #### On WSL2
 ```bash
 # https://github.com/nix-community/NixOS-WSL
@@ -63,6 +65,7 @@ nix-shell '<home-manager>' -A install
 extra-experimental-features = flakes
 extra-experimental-features = nix-command
 ```
+then run the above commands to install Home-manager. 
 
 ### 3. Clone this repo
 ```bash
@@ -89,6 +92,7 @@ cd nix-config
 ### 4b. Modify the flake.nix and home.nix
 1. Modify the flake.nix and change your username
 2. Modify home.nix, comment out and modules you dont want from imports, change nixos to your username / homedir.
-3. run ```home-manager switch --flake #[username you put in flake.nix]
+3. Change git details in modules/git.nix. Remove modify signing key and ensure gpg {ssh} settings are modified. You can read on how to use 1password with Nix here: https://nixos.wiki/wiki/1Password
+3. run ```home-manager switch --flake #[username you put in flake.nix]```
 
 Thats it, thats a basic home-manager setup. 
