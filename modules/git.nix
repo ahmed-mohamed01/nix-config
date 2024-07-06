@@ -16,7 +16,7 @@
       core = { sshCommand = "ssh.exe"; };
       commit = { gpgsign = true; };
       init = { defaultBranch = "main"; };
-      #user  = { signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINRRRql59PulK2duyhpO2kxENi0/eZ1NhBGDgTVcf8ar"; };
+      user  = { signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINRRRql59PulK2duyhpO2kxENi0/eZ1NhBGDgTVcf8ar"; };
     };
   };
 }
