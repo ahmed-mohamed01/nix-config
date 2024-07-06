@@ -1,27 +1,28 @@
 { config, lib, pkgs, ... }:
 
 { 
-  imports = [
+#----- Include modules ------------------------------------------------------#
+  imports = [    # comment out what you don't need
     modules/git.nix    # Enable git and set defaults
     modules/zsh.nix      # Enable zsh and set defaults
     modules/fonts.nix     # Enable nerd fonts
     modules/direnv.nix    # Enable direnv and set defaults
   ];
 
-  #----- Basic home settings --------------------------------------------------#
+#----- Basic home settings --------------------------------------------------#
   home = {
     username = "nixos";
     homeDirectory = "/home/nixos";
     stateVersion = "24.05"; # Please read the comment before changing.
 
-  #----- Installed programs ---------------------------------------------------#
+#----- Installed programs ---------------------------------------------------#
     packages = with pkgs; [     
-    #-- Note that Extra programs are defined in cli-tools.nix -----------------#
+    #-- Note that more programs are defined in cli-tools.nix ----------------#
       hello
       lazydocker
       lazygit
       unzip
-      neofetch#
+      neofetch
       mc
       ripgrep
     ];
