@@ -4,10 +4,21 @@
   imports = [
     ./cli-tools.nix
   ];
+  #----- Misc zsh-related cli programs to be installed -------------------------#
+  home.packages =  [          
+      pkgs.zinit   # Install zinit
+      pkgs.zsh-powerlevel10k
+    ];
+  
 #----- ZSH management ----------------------------------------------------------#
   programs.zsh = {
     enable = true;
     #enableCompletion = true;
+    syntaxHighlighting = {
+      enable = true;
+      catppuccin.flavor = "mocha";
+      catppuccin.enable = true;
+    };
     history = {
         extended = true;
         share = true;
@@ -33,8 +44,9 @@
         dotsys = "sudo nixos-rebuild switch -I nixos-config=system/configuration.nix";
 
     };
-    # Settings to be added to the top of .zshrc
+    #----- Settings to be added to the top of .zshrc ---------------------------#
     initExtraFirst = ''
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       source ${pkgs.zinit}/share/zinit/zinit.zsh  # ---> # Load zinit
     '';
     completionInit = ''
@@ -42,8 +54,8 @@
         zinit cdreplay -q
       '';
     initExtra = ''
-        zinit ice depth=1; zinit light romkatv/powerlevel10k    # Install powerlevel10k
-        zinit light zdharma-continuum/fast-syntax-highlighting
+        # zinit ice depth=1; zinit light romkatv/powerlevel10k    # Install powerlevel10k
+        #zinit light zdharma-continuum/fast-syntax-highlighting
         zinit light zsh-users/zsh-completions
         zinit light zsh-users/zsh-autosuggestions
         zinit light chisui/zsh-nix-shell

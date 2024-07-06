@@ -15,13 +15,15 @@
     stateVersion = "24.05"; # Please read the comment before changing.
 
   #----- Installed programs ---------------------------------------------------#
-    packages = with pkgs; [
+    packages = with pkgs; [     
+    #-- Note that Extra programs are defined in cli-tools.nix -----------------#
       hello
       lazydocker
       lazygit
       unzip
-      neofetch
-
+      neofetch#
+      mc
+      ripgrep
     ];
 
   };

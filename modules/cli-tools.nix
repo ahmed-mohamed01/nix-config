@@ -1,20 +1,9 @@
-{ config, ...}:
+{ config, pkgs, ...}:
 {
   programs = {
     # #----- Bat and related settings ----------------------------------------------------#
     bat = {
       enable = true;
-      theme = {
-        dracula = {
-          src = pkgs.fetchFromGitHub {
-            owner = "dracula";
-            repo = "sublime"; # Bat uses sublime syntax for its themes
-            rev = "26c57ec282abcaa76e57e055f38432bd827ac34e";
-            sha256 = "019hfl4zbn4vm4154hh3bwk6hm7bdxbr1hdww83nabxwjn99ndhv";
-          };
-          file = "Dracula.tmTheme";
-        };
-      }; 
     };
     #----- Fd and related settings -------------------------------------------------------#
     fd = {
@@ -55,43 +44,37 @@
       enable = true;
       enableZshIntegration = true;
     };
-    #----- ranger related settings ------------------------------------------------0------#
-    ranger = {
+
+  };
+
+  #----- Set Catppuccin theme globally ---------------------------------------------------#
+  catppuccin = {
+    enable = true;
+    accent = "blue";
+    flavor = "mocha";
+    pointerCursor = {
       enable = true;
-      plugins = [
-        [
-          {
-            name = "zoxide";
-            src = builtins.fetchGit {
-              url = "https://github.com/jchook/ranger-zoxide.git";
-              rev = "363df97af34c96ea873c5b13b035413f56b12ead";
-            };
-          }  
-        ]
-      ]
+      accent = "sapphire";
+      flavor = "mocha";
     };
+  };
+  #----- Set micro theme  ----------------------------------------------------------------#
+  # home.file."catppuccin-mocha.micro" = {
+  #   enable = true;
+  #   source = "./src/micro/catppuccin-mocha.micro";
+  #   target = "~/.config/micro/skins/catppuccin-mocha.micro";
+  # };
+  #----- Midnight commander theme settings -----------------------------------------------#
+  # home.file."dracula.ini" = {
+  #   enable = true;
+  #   source = "./src/mc/dracula256.ini";
+  #   target = "~/.config/mc/dracula256.ini";
+  # };
 
-  };
-
-  #----- Misc cli programs to be installed -----------------------------------------------#
-  home.packages = with pkgs [          # Install zinit
-      zinit
-      mc
-      speedtest-cli
-    ];
-  #----- fzfand related settings ---------------------------------------------------------#
-  home.file = {     # Set theme. 
-    enable = true;
-    source = "./src/micro/catppuccin-mocha.micro";
-    target = "~/.config/micro/colorschemes/catppuccin-mocha.micro";
-  };
-  #----- Micro theme settings ------------------------------------------------------------#
-  home.file = {
-    enable = true;
-    source = "./src/mc/dracula256.ini";
-    target = "~/.config/mc/skins/dracula256.ini";
-  };
-  micro.settings = { colorscheme = catppuccin-mocha };
+  #----- Set micro settings --------------------------------------------------------------#
+  # programs.micro.settings = { 
+  #   colorscheme = "catppuccin-mocha";
+  # };
   home.sessionVariables = {
     MICRO_TRUECOLOR=1;
   };
