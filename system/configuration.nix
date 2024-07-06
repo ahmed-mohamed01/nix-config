@@ -31,7 +31,12 @@
   
 #----- User settings ------------------------------------------------------------#
   programs.zsh.enable = true;    # Install ZSH so it cab be used as default shell
-  users.defaultUserShell = pkgs.zsh;   # Set ZSH as default shell
+  environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;  # Set ZSH as default shell
+  users.users.nixos = {
+    #shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "wheel" "docker" ];  # Add user to additional groups
+  };   
   users.users.ahmed = {
   	isNormalUser = true;
   	description = "Ahmed User acc";
@@ -52,6 +57,14 @@
       };
       };
     tailscale.enable = true;    # Enable tailscale
+
+  };
+  virtualisation.docker = {
+      enable = true;   # Install docker
+      rootless ={
+        enable = true;   # Enable rootless docker
+        setSocketVariable = true;
+      };
   };
 
 #----- NixOS settings -----------------------------------------------------------#
