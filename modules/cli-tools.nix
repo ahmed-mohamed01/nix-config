@@ -46,7 +46,7 @@
     };
 
   };
-
+#--------------------------------------------------------------------------------------------#
   #----- Set Catppuccin theme globally ---------------------------------------------------#
   catppuccin = {
     enable = true;
@@ -58,23 +58,14 @@
       flavor = "mocha";
     };
   };
-  #----- Set micro theme  ----------------------------------------------------------------#
-  # home.file."catppuccin-mocha.micro" = {
-  #   enable = true;
-  #   source = "./src/micro/catppuccin-mocha.micro";
-  #   target = "~/.config/micro/skins/catppuccin-mocha.micro";
-  # };
+
   #----- Midnight commander theme settings -----------------------------------------------#
   # home.file."dracula.ini" = {
   #   enable = true;
   #   source = "./src/mc/dracula256.ini";
-  #   target = "~/.config/mc/dracula256.ini";
+  #   target = "~/.config/mc/skins/dracula256.ini";
   # };
 
-  #----- Set micro settings --------------------------------------------------------------#
-  # programs.micro.settings = { 
-  #   colorscheme = "catppuccin-mocha";
-  # };
   home.sessionVariables = {
     MICRO_TRUECOLOR=1;
   };
