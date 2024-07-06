@@ -1,9 +1,8 @@
 { pkgs, ... }:
-
+# ------------ sample fish config ---------------------------------#
 {
   home = {
     packages = with pkgs; [
-      abduco
       age
       aria2
       bat
@@ -12,16 +11,10 @@
       entr
       fd
       file
-      fossil
-      ijq
-      joshuto
-      jq
       lazydocker
       lazygit
-      moreutils
       trash-cli
       unzip
-      usbutils
       wget
     ];
     sessionVariables = {
