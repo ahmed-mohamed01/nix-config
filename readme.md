@@ -74,7 +74,7 @@ cd nix-config
 ```
 ### 4a. Some important notes
 
-### Ensure you have backed up any configs you are transferring to home-manager. eg if you are enabling zsh, ensure .zshrc is backed up. 
+### Ensure you have backed up any configs you are transferring to home-manager. eg if you are enabling zsh, ensure .zshrc is backed up. They WILL be overidden.
 1. If you are on Ubuntu/Pop or any non NixOS linux version, you cannot manage system services (such as docker, tailscale ) using Nix. You will need to configure them normally on the system. 
 2. We will be using flakes to set up Home-manager. More on flakes here: https://nixos.wiki/wiki/Flakes
 3. More on home manager: 
