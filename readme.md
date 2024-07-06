@@ -86,6 +86,7 @@ cd nix-config
 - Home-manager options: https://home-manager-options.extranix.com/  ---> this is used in home.nix
 - Excellent starter resource: https://github.com/Evertras/simple-homemanager/blob/main/01-install.md
 - Unclutter system and use per-project development environments using direnv: https://direnv.net/
+- More on direnv in [direnv.md](https://github.com/ahmed-mohamed01/nix-config/samples/direnv.md)
 - Faster direnv using nix-direnv: https://github.com/nix-community/nix-direnv
 6. Any program that you choose to manage with home-manager would be owned by home-manager, so you cannot modify it outside home manager anymore. eg, if you ac
 
