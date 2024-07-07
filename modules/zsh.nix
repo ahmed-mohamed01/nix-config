@@ -13,7 +13,8 @@
 #----- ZSH management ----------------------------------------------------------#
   programs.zsh = {
     enable = true;
-    #enableCompletion = true;
+    # autosuggestion.enable = true;
+    # enableCompletion = true;
     # syntaxHighlighting = {
     #   enable = true;
     #   catppuccin.flavor = "mocha";
@@ -46,24 +47,23 @@
     };
     #----- Settings to be added to the top of .zshrc ---------------------------#
     initExtraFirst = ''
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      
+      #source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       source ${pkgs.zinit}/share/zinit/zinit.zsh  # ---> # Load zinit
     '';
-    completionInit = ''
-        autoload -Uz compinit && compinit
-        zinit cdreplay -q
-      '';
+    # completionInit = ''
+    #     autoload -Uz compinit && compinit
+    #     zinit cdreplay -q
+    #   '';
     initExtra = ''
-        # zinit ice depth=1; zinit light romkatv/powerlevel10k    # Install powerlevel10k
+        zinit ice depth=1; zinit light romkatv/powerlevel10k    # Install powerlevel10k
         zinit light zdharma-continuum/fast-syntax-highlighting
         zinit light zsh-users/zsh-completions
         zinit light zsh-users/zsh-autosuggestions
         zinit light chisui/zsh-nix-shell
         zinit light Aloxaf/fzf-tab
         zinit snippet OMZP::git
-        zinit snippet OMZP::sudo
         zinit snippet OMZP::command-not-found
-        zinit snippet OMZP::nvm
         zinit snippet OMZP::colored-man-pages
 
         [[ ! -e op.exe ]] || alias ssh="ssh.exe"
@@ -72,7 +72,7 @@
         bindkey '^n' history-search-forward
 
         [[ ! -f ${./src/zsh/.p10k.zsh} ]] || source ${./src/zsh/.p10k.zsh}
-
+        
         '';
     sessionVariables = {
         ZSH_AUTOSUGGEST_STRATEGY = ["history" "completion"];
