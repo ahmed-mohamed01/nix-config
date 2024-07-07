@@ -96,7 +96,6 @@ cd nix-config
 3. Change git details in modules/git.nix. Remove modify signing key and ensure gpg {ssh} settings are modified. You can read on how to use 1password with Nix here: https://nixos.wiki/wiki/1Password
 3. To activate home-manager profile, run:
 ```nix
-
 home-manager switch --flake .#[username you put in flake.nix]
 ```
 
