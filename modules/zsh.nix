@@ -14,11 +14,11 @@
   programs.zsh = {
     enable = true;
     #enableCompletion = true;
-    syntaxHighlighting = {
-      enable = true;
-      catppuccin.flavor = "mocha";
-      catppuccin.enable = true;
-    };
+    # syntaxHighlighting = {
+    #   enable = true;
+    #   catppuccin.flavor = "mocha";
+    #   catppuccin.enable = true;
+    # };
     history = {
         extended = true;
         share = true;
@@ -55,7 +55,7 @@
       '';
     initExtra = ''
         # zinit ice depth=1; zinit light romkatv/powerlevel10k    # Install powerlevel10k
-        #zinit light zdharma-continuum/fast-syntax-highlighting
+        zinit light zdharma-continuum/fast-syntax-highlighting
         zinit light zsh-users/zsh-completions
         zinit light zsh-users/zsh-autosuggestions
         zinit light chisui/zsh-nix-shell
@@ -77,6 +77,7 @@
     sessionVariables = {
         ZSH_AUTOSUGGEST_STRATEGY = ["history" "completion"];
         FZF_COMPLETION_TRIGGER= "==";
+        POWERLEVEL9K_INSTANT_PROMPT= "quiet";
     };
   };
 
