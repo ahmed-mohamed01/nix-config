@@ -13,13 +13,23 @@
 #----- ZSH management ----------------------------------------------------------#
   programs.zsh = {
     enable = true;
-    # autosuggestion.enable = true;
-    # enableCompletion = true;
-    # syntaxHighlighting = {
-    #   enable = true;
-    #   catppuccin.flavor = "mocha";
-    #   catppuccin.enable = true;
-    # };
+    enableCompletion = true;
+#----- zplug plugins -----------------------------------------------------------#
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
+        { name = "zsh-users/zsh-autosuggestions"; tags = [ defer:3 ];}
+        { name = "chisui/zsh-nix-shell"; tags = [ defer:3 ]; }
+        { name = "zdharma/fast-syntax-highlighting"; tags = [ defer:3 ]; }
+        { name = "Aloxaf/fzf-tab"; tags = [ defer:3]; }
+        { name = "plugins/git"; tags = [ from:oh-my-zsh defer:3 ]; }
+        { name = "plugins/colored-man-pages"; tags = [from:oh-my-zsh]; }
+        { name = "plugins/command-not-found"; tags = [from:oh-my-zsh]; }
+
+      ];
+    };
+    #----- History settings ----------------------------------------------------#
     history = {
         extended = true;
         share = true;
@@ -29,43 +39,26 @@
         save = 10000;
         size = 10000;
     };
+    #----- Keymap settings -----------------------------------------------------#
     defaultKeymap = "emacs";
     #----- Aliases -------------------------------------------------------------#
     shellAliases = {
-        lsd = "eza --icons --tree -D --git-repos --level=3";
-        update = "sudo nixos-rebuild switch";
-        hs = "home-manager switch";
         c="clear";
-        lsa="eza --icons -a -l";
-        lst = "eza --icons --tree --level=2";
-        eh = "code ~/dotfiles/home.nix";
-        es = "code ~/dotfiles/system/configuration.nix";
-        ssh = "ssh.exe";
+        lsd = "eza --icons --tree -D --git-repos --level=3";  #list directories
+        lsa="eza --icons -a -l";                              #list all
+        lst = "eza --icons --tree --level=2";                 #list tree
+        eh = "code ~/dotfiles/home.nix";                      #edit home.nix
+        es = "code ~/dotfiles/system/configuration.nix";      #edit system.nix
         dothome = "home-manager switch --flake .#nixos";
         dotsys = "sudo nixos-rebuild switch -I nixos-config=system/configuration.nix";
-
     };
     #----- Settings to be added to the top of .zshrc ---------------------------#
-    initExtraFirst = ''
-      
-      #source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      source ${pkgs.zinit}/share/zinit/zinit.zsh  # ---> # Load zinit
-    '';
-    # completionInit = ''
-    #     autoload -Uz compinit && compinit
-    #     zinit cdreplay -q
-    #   '';
+    completionInit = ''
+        #autoload -Uz compinit && compinit
+        #zinit cdreplay -q
+      '';
     initExtra = ''
-        zinit ice depth=1; zinit light romkatv/powerlevel10k    # Install powerlevel10k
-        zinit light zdharma-continuum/fast-syntax-highlighting
-        zinit light zsh-users/zsh-completions
-        zinit light zsh-users/zsh-autosuggestions
-        zinit light chisui/zsh-nix-shell
-        zinit light Aloxaf/fzf-tab
-        zinit snippet OMZP::git
-        zinit snippet OMZP::command-not-found
-        zinit snippet OMZP::colored-man-pages
-
+        export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
         [[ ! -e op.exe ]] || alias ssh="ssh.exe"
 
         bindkey '^p' history-search-backward
@@ -75,9 +68,8 @@
         
         '';
     sessionVariables = {
-        ZSH_AUTOSUGGEST_STRATEGY = ["history" "completion"];
         FZF_COMPLETION_TRIGGER= "==";
-        POWERLEVEL9K_INSTANT_PROMPT= "quiet";
+        #POWERLEVEL9K_INSTANT_PROMPT= "quiet";
     };
   };
 
