@@ -81,7 +81,7 @@
 
       homeConfigurations = {
         #---- Main config, managed via home-manager -----------------------------------------------------------#
-        nixos = home-manager.lib.homeManagerConfiguration {
+        non-wsl = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ 
             ./home.nix
