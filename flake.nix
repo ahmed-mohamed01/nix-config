@@ -83,6 +83,14 @@
             catppuccin.homeManagerModules.catppuccin
             ];
         };
+        #---- Virtual box config, managed via home-manager ----------------------------------------------------#
+        demo@vm = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ 
+            ./hosts/vm/home.nix
+            catppuccin.homeManagerModules.catppuccin
+            ];
+        };
       };
   };  
 }
