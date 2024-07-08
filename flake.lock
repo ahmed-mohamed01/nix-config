@@ -31,7 +31,7 @@
         "type": "github"
       }
     },
-    "flake-utils": {
+    "flake-utils": 
       "inputs": {
         "systems": "systems"
       },
