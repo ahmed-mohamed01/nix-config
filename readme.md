@@ -77,18 +77,9 @@ cd nix-config
 ### Ensure you have backed up any configs you are transferring to home-manager. eg if you are enabling zsh, ensure .zshrc is backed up. They WILL be overidden.
 1. If you are on Ubuntu/Pop or any non NixOS linux version, you cannot manage system services (such as docker, tailscale ) using Nix. You will need to configure them normally on the system. 
 2. We will be using flakes to set up Home-manager. More on flakes here: https://nixos.wiki/wiki/Flakes
-3. More on home manager: 
-4. home.nix is how dotfiles and programs on your system would be managed from now on
-5. Some important resources: 
-- Nix wiki: https://nixos.wiki/wiki/Main_Page
-- Nix packages search: https://search.nixos.org/packages
-- Nix options: https://search.nixos.org/options? ---> this is only used on configuration.nix
-- Home-manager options: https://home-manager-options.extranix.com/  ---> this is used in home.nix
-- Excellent starter resource: https://github.com/Evertras/simple-homemanager/blob/main/01-install.md
-- Unclutter system and use per-project development environments using direnv: https://direnv.net/
-- More on direnv in [direnv.md](https://github.com/ahmed-mohamed01/nix-config/samples/direnv.md)
-- Faster direnv using nix-direnv: https://github.com/nix-community/nix-direnv
-6. Any program that you choose to manage with home-manager would be owned by home-manager, so you cannot modify it outside home manager anymore. eg, if you ac
+3. More on home manager: https://nix-community.github.io/home-manager/
+4. home.nix is how dotfiles and programs on your system would be managed from now on 
+5. Any program that you choose to manage with home-manager would be owned by home-manager, so you cannot modify it outside home manager anymore. eg, if you choose to apply home-manager settings to git, .gitconfig whould be read-only, and can only be modified using git.nix
 
 ### 4b. Modify the flake.nix and home.nix
 1. Modify the flake.nix and change your username
@@ -100,3 +91,18 @@ home-manager switch --flake .#[username you put in flake.nix]
 ```
 
 Thats it, thats a basic home-manager setup. 
+
+
+#### Resources:
+1. Best single resource I have found for newbies to get you started: https://github.com/Evertras/simple-homemanager/blob/main/01-install.md
+2. This repo was very helpful in setting up a more complete flake-based nixOS/Home-manager setup: https://github.com/Misterio77/nix-starter-configs/
+3. Vimjoyer
+ - Youtube: https://www.youtube.com/@vimjoyer
+ - Github: https://github.com/vimjoyer/flake-starter-config
+4. Nix wiki: https://nixos.wiki/wiki/Main_Page
+5. Nix packages search: https://search.nixos.org/packages
+6. Nix options: https://search.nixos.org/options? ---> this is only used on configuration.nix
+7. Home-manager options: https://home-manager-options.extranix.com/  ---> this is used in home.nix
+8. Unclutter system and use per-project development environments using direnv: https://direnv.net/
+9. More on direnv in this repo:samples/direnv
+10. Faster direnv using nix-direnv: https://github.com/nix-community/nix-direnv
