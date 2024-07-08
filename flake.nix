@@ -7,8 +7,8 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #----- Other custom inputs ---------------------------------------------------------------------------------#
 
+    #----- Other custom inputs ---------------------------------------------------------------------------------#
     nixos-wsl = {    # Enable if using NixOS-WSL
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +18,7 @@
 
   };
                                
-  outputs = { self, nixpkgs, catppuccin, nixos-wsl, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, catppuccin, nixos-wsl, home-manager, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";    # Change this to "x86_64-darwin" for macOS
