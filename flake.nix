@@ -7,8 +7,8 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #----- Other custom inputs ---------------------------------------------------------------------------------#
 
+    #----- Other custom inputs ---------------------------------------------------------------------------------#
     nixos-wsl = {    # Enable if using NixOS-WSL
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +18,7 @@
 
   };
                                
-  outputs = { self, nixpkgs, catppuccin, nixos-wsl, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, catppuccin, nixos-wsl, home-manager, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";    # Change this to "x86_64-darwin" for macOS
@@ -31,13 +31,6 @@
     #---- Available through 'nixos-rebuild --flake .#your-hostname' -------------------------------------------#
 
       nixosConfigurations = {
-        #----- Spectre configuration --------------------------------------------------------------------------#
-        spectre = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          specialArgs = {inherit inputs outputs;};
-          modules = [ ./hosts/spectre/configuration.nix ];
-        };
-
         #----- WSL configuration ------------------------------------------------------------------------------#
         nixos = nixos-wsl.nixosSystem {
           inherit pkgs;
@@ -55,26 +48,14 @@
           modules = [ ./hosts/vm/configuration.nix ];
         };
 
-        #----- Main desktop configuration ---------------------------------------------------------------------#
-        um790 = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          specialArgs = {inherit inputs outputs;};
-          modules = [ ./hosts/um790/configuration.nix ];
-        };
+        #----- TODO: Spectre configuration --------------------------------------------------------------------#
+        #----- TODO: Main desktop configuration ---------------------------------------------------------------#
       };
 
   #----- Home manbager configurations, identified via hostname ------------------------------------------------#
     #---- Available through 'home-manager --flake .#your-username@your-hostname' ------------------------------#
 
       homeConfigurations = {
-        #---- Main config, managed via home-manager -----------------------------------------------------------#
-        non-wsl = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ 
-            ./home.nix
-            catppuccin.homeManagerModules.catppuccin
-            ];
-        };
        #---- WSL config, managed via home-manager -------------------------------------------------------------#
         wsl = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -84,7 +65,7 @@
             ];
         };
         #---- Virtual box config, managed via home-manager ----------------------------------------------------#
-        demo@vm = home-manager.lib.homeManagerConfiguration {
+        demo = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ 
             ./hosts/vm/home.nix

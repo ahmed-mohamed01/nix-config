@@ -16,6 +16,7 @@
       commit = { gpgsign = true; };
       init = { defaultBranch = "main"; };
       user  = { signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINRRRql59PulK2duyhpO2kxENi0/eZ1NhBGDgTVcf8ar"; };
+      color = { ui = "auto"; branch = "auto"; status = "auto"; diff = "auto"; interactive = "auto"; };
     };
   };
 }
