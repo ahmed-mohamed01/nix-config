@@ -31,13 +31,6 @@
     #---- Available through 'nixos-rebuild --flake .#your-hostname' -------------------------------------------#
 
       nixosConfigurations = {
-        #----- Spectre configuration --------------------------------------------------------------------------#
-        spectre = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          specialArgs = {inherit inputs outputs;};
-          modules = [ ./hosts/spectre/configuration.nix ];
-        };
-
         #----- WSL configuration ------------------------------------------------------------------------------#
         nixos = nixos-wsl.nixosSystem {
           inherit pkgs;
@@ -54,27 +47,12 @@
           specialArgs = {inherit inputs outputs;};
           modules = [ ./hosts/vm/configuration.nix ];
         };
-
-        #----- Main desktop configuration ---------------------------------------------------------------------#
-        um790 = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          specialArgs = {inherit inputs outputs;};
-          modules = [ ./hosts/um790/configuration.nix ];
-        };
       };
 
   #----- Home manbager configurations, identified via hostname ------------------------------------------------#
     #---- Available through 'home-manager --flake .#your-username@your-hostname' ------------------------------#
 
       homeConfigurations = {
-        #---- Main config, managed via home-manager -----------------------------------------------------------#
-        non-wsl = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ 
-            ./home.nix
-            catppuccin.homeManagerModules.catppuccin
-            ];
-        };
        #---- WSL config, managed via home-manager -------------------------------------------------------------#
         wsl = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
