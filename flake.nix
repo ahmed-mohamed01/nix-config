@@ -23,7 +23,7 @@
       lib = nixpkgs.lib;
       system = "x86_64-linux";    # Change this to "x86_64-darwin" for macOS
       pkgs = import nixpkgs { inherit system; };
-      inherit (self) outputs;
+      #inherit (self) outputs;
     in {
       #imports = [ inputs._1password-shell-plugins.hmModules.default ];   # Enable if using 1password shell plugins
 
@@ -34,7 +34,7 @@
         #----- WSL configuration ------------------------------------------------------------------------------#
         nixos = nixos-wsl.nixosSystem {
           inherit pkgs;
-          specialArgs = {inherit inputs outputs;};
+          #specialArgs = {inherit inputs outputs;};
           modules = [
             nixos-wsl.nixosModules.default { wsl.enable = true; }
             ./hosts/wsl/configuration.nix
@@ -44,7 +44,7 @@
         #----- Virtual Box VM config --------------------------------------------------------------------------#
         vm = nixpkgs.lib.nixosSystem {
           inherit pkgs;
-          specialArgs = {inherit inputs outputs;};
+          #specialArgs = {inherit inputs outputs;};
           modules = [ ./hosts/vm/configuration.nix ];
         };
       };
