@@ -47,6 +47,11 @@
           specialArgs = {inherit inputs outputs;};
           modules = [ ./hosts/vm/configuration.nix ];
         };
+        spectre = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          specialArgs = {inherit inputs outputs;};
+          modules = [ ./hosts/spectre/configuration.nix ];
+        };
       };
 
   #----- Home manbager configurations, identified via hostname ------------------------------------------------#
@@ -66,6 +71,13 @@
           inherit pkgs;
           modules = [ 
             ./hosts/vm/home.nix
+            catppuccin.homeManagerModules.catppuccin
+            ];
+        };
+        spectre = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ 
+            ./hosts/spectre/home.nix
             catppuccin.homeManagerModules.catppuccin
             ];
         };
