@@ -84,7 +84,7 @@
             ];
         };
         #---- Virtual box config, managed via home-manager ----------------------------------------------------#
-        demo@vm = home-manager.lib.homeManagerConfiguration {
+        vm = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ 
             ./hosts/vm/home.nix
