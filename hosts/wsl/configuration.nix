@@ -7,7 +7,7 @@
 {
   imports = [
     <nixos-wsl/modules>    # include NixOS-WSL modules
-    <home-manager/nixos>
+    #<home-manager/nixos>
 
   ];
 #----- WSL settings -------------------------------------------------------------#
