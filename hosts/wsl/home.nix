@@ -3,7 +3,7 @@
 { 
 #----- Include modules ------------------------------------------------------#
   imports = [    # comment out what you don't need
-    ../../modules/git.nix    # Enable git and set defaults
+    ../../modules/wsl/git.nix    # Enable git and set defaults
     ../../modules/zsh.nix      # Enable zsh and set defaults
     ../../modules/fonts.nix     # Enable nerd fonts
     ../../modules/direnv.nix    # Enable direnv and set defaults
