@@ -22,10 +22,9 @@
     unstable-pkgs = import unstable-nixpkgs { inherit system; };
   in {
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       #---- NixOS-WSL configuration -------------------------------------------#
-      wsl = nixpkgs.lib.nixosSystem {
+      wsl = nixpkgs.lib.nixosSystem {    # Usage: 'nixos-rebuild --flake .#wsl'
         inherit system;
         modules = [
           nixos-wsl.nixosModules.default
