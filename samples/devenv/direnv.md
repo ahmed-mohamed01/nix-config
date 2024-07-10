@@ -16,6 +16,7 @@ Direnv can be used to automatically set up project specific environmental variab
 [whitelist]
 prefix = [ "/path/to/your/project"]
 ```
+hint: this can be added to direnv.nix to configure this automatically. 
 
 Now when you cd in to this directory, you will have access to the packages specified in the flake.nix
 
