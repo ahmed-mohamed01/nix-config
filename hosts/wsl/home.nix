@@ -25,6 +25,13 @@
       neofetch
       mc
       ripgrep
+      just
+      helix
+      tiptop
+      python312Packages.howdoi
+      tlrc
+      yai
+
     ];
 
   };
