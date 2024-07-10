@@ -7,6 +7,8 @@
     ../../modules/zsh.nix      # Enable zsh and set defaults
     ../../modules/fonts.nix     # Enable nerd fonts
     ../../modules/direnv.nix    # Enable direnv and set defaults
+    ../../modules/kitty.nix    # Enable kitty and set defaults
+    ../../modules/foot.nix    # Enable foot and set defaults
   ];
 
 #----- Basic home settings --------------------------------------------------#
@@ -26,9 +28,9 @@
       mc
       ripgrep
       just
-      tiptop
       tlrc
       yai
+
 
     ];
 

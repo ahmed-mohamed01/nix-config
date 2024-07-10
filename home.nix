@@ -25,6 +25,11 @@
       neofetch
       mc
       ripgrep
+      home-manager
+      htop
+      ctop
+      rm-improved
+      speedtest-cli
     ];
 
   };
