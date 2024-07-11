@@ -6,8 +6,8 @@
   ];
   #----- Misc zsh-related cli programs to be installed -------------------------#
   home.packages =  [          
-      pkgs.zinit   # Install zinit
-      pkgs.zsh-powerlevel10k
+      #pkgs.zinit   # Install zinit
+      #pkgs.zsh-powerlevel10k
     ];
   
 #----- ZSH management ----------------------------------------------------------#
@@ -21,11 +21,15 @@
         { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
         { name = "zsh-users/zsh-autosuggestions"; tags = [ defer:3 ];}
         { name = "chisui/zsh-nix-shell"; tags = [ defer:3 ]; }
-        { name = "zdharma/fast-syntax-highlighting"; tags = [ defer:3 ]; }
+        { name = "zdharma/fast-syntax-highlighting"; tags = [ defer:2 ]; }
         { name = "Aloxaf/fzf-tab"; tags = [ defer:3]; }
         { name = "plugins/git"; tags = [ from:oh-my-zsh defer:3 ]; }
-        { name = "plugins/colored-man-pages"; tags = [from:oh-my-zsh]; }
-        { name = "plugins/command-not-found"; tags = [from:oh-my-zsh]; }
+        { name = "plugins/colored-man-pages"; tags = [from:oh-my-zsh defer:3 ]; }
+        { name = "plugins/command-not-found"; tags = [from:oh-my-zsh defer:3 ]; }
+        { name = "plugins/you-should-use"; tags = [ from:oh-my-zsh defer:3 ]; }
+        { name = "plugins/zsh-bat"; tags = [ from:oh-my-zsh defer:3 ]; }
+
+
 
       ];
     };
@@ -59,6 +63,13 @@
       '';
     initExtra = ''
         export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+        
+        # Completion styling
+        zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+        zstyle ':completion:*' menu no
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
+        zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color=always $realpath'
+
         [[ ! -e op.exe ]] || alias ssh="ssh.exe"
 
         bindkey '^p' history-search-backward
