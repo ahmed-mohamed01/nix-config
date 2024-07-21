@@ -73,6 +73,13 @@
           catppuccin.homeManagerModules.catppuccin
           ];
         };
+      proxmox = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ 
+          ./hosts/proxmox/home.nix   
+          catppuccin.homeManagerModules.catppuccin
+          ];
+        };
     };
   };
 }
