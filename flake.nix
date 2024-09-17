@@ -45,6 +45,10 @@
         inherit pkgs;
         modules = [ ./hosts/spectre/configuration.nix ];
       };
+      main_pc = lib.nixosSystem {
+        inherit pkgs;
+        modules = [ ./hosts/main_pc/configuration.nix ];
+      };
     };
   # 
     # Available through 'home-manager --flake .#your-username@your-hostname'
@@ -77,6 +81,13 @@
         inherit pkgs;
         modules = [ 
           ./hosts/proxmox/home.nix   
+          catppuccin.homeManagerModules.catppuccin
+          ];
+        };
+      main_pc = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ 
+          ./hosts/main_pc/home.nix   
           catppuccin.homeManagerModules.catppuccin
           ];
         };
