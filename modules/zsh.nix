@@ -74,6 +74,7 @@
 
         bindkey '^p' history-search-backward
         bindkey '^n' history-search-forward
+        [[ $TERM == "xterm-kitty" ]] && alias ssh="kitten ssh"   # If using kitty terminal, use kitten for ssh
 
         [[ ! -f ${./src/zsh/.p10k.zsh} ]] || source ${./src/zsh/.p10k.zsh}
         

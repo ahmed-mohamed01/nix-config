@@ -37,17 +37,14 @@
         ];
       };
       #---- Virtual Box VM config ---------------------------------------------#
-      vm = lib.nixosSystem {
-        inherit pkgs;
-        modules = [ ./hosts/vm/configuration.nix ];
-      };
+
       #---- Spectre config ---------------------------------------------------#
       spectre = lib.nixosSystem {
         inherit pkgs;
         modules = [ ./hosts/spectre/configuration.nix ];
       };
       main_pc = lib.nixosSystem {
-        inherit pkgs;
+        inherit unstable-pkgs;
         modules = [ ./hosts/main_pc/configuration.nix ];
       };
     };
@@ -86,7 +83,7 @@
           ];
         };
       main_pc = home-manager.lib.homeManagerConfiguration {
-        inherit unstable-pkgs;
+        pkgs = unstable-pkgs;
         modules = [ 
           ./hosts/main_pc/home.nix   
           catppuccin.homeManagerModules.catppuccin

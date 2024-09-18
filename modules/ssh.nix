@@ -31,6 +31,10 @@
           User root
           Port 22
 
+      Host pop-vm
+          HostName 192.168.8.106
+          User ahmed
+          Port 22
 
     '';
   };
