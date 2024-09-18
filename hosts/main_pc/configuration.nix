@@ -8,41 +8,41 @@
 
   ];
  # Bootloader.
-boot.loader.systemd-boot.enable = true;
-boot.loader.efi.canTouchEfiVariables = true;
-
+# boot.loader.systemd-boot.enable = true;
+# boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.useOSProber = true;
 #----Networking-----------------------------------------------------------------#
-networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-networking.networkmanager.enable = true;    # Enable networking
+  networking.networkmanager.enable = true;    # Enable networking
 
 #-----Localization settings-----------------------------------------------------#
-time.timeZone = "Europe/London";            # Set your time zone.
-i18n.defaultLocale = "en_GB.UTF-8";         # Select internationalisation properties.
-
-i18n.extraLocaleSettings = {
-  LC_ADDRESS = "en_GB.UTF-8";
-  LC_IDENTIFICATION = "en_GB.UTF-8";
-  LC_MEASUREMENT = "en_GB.UTF-8";
-  LC_MONETARY = "en_GB.UTF-8";
-  LC_NAME = "en_GB.UTF-8";
-  LC_NUMERIC = "en_GB.UTF-8";
-  LC_PAPER = "en_GB.UTF-8";
-  LC_TELEPHONE = "en_GB.UTF-8";
-  LC_TIME = "en_GB.UTF-8";
-  };
+  time.timeZone = "Europe/London";            # Set your time zone.
+  i18n.defaultLocale = "en_GB.UTF-8";         # Select internationalisation properties.
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_GB.UTF-8";
+    LC_IDENTIFICATION = "en_GB.UTF-8";
+    LC_MEASUREMENT = "en_GB.UTF-8";
+    LC_MONETARY = "en_GB.UTF-8";
+    LC_NAME = "en_GB.UTF-8";
+    LC_NUMERIC = "en_GB.UTF-8";
+    LC_PAPER = "en_GB.UTF-8";
+    LC_TELEPHONE = "en_GB.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
+    };
 # Enable sound with pipewire.
-hardware.pulseaudio.enable = false;
-security.rtkit.enable = true;
-services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  # If you want to use JACK applications, uncomment this
-  #jack.enable = true;
-  };
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+    };
 
 #----- Applications to be installed systemwide  ---------------------------------#
   environment.systemPackages = with pkgs; [
@@ -92,8 +92,15 @@ services.pipewire = {
         };
       };
     tailscale.enable = true;    # Enable tailscale
-
+    displayManager.sddm.enable = true;      # Enable the KDE Plasma Desktop Environment.
+    desktopManager.plasma6.enable = true;
+    xserver.xkb = {      # Configure keymap in X11
+      layout = "gb";
+      variant = "";
+      };
+    xserver.enable = true;    # Enable the X11 windowing system. \You can disable this if you're only using the Wayland session.
   };
+
   virtualisation.docker = {
       enable = true;   # Install docker
       rootless ={
@@ -101,7 +108,8 @@ services.pipewire = {
         setSocketVariable = true;
       };
   };
-
+   
+  console.keyMap = "uk";     # Configure console keymap
 #----- NixOS settings -----------------------------------------------------------#
   programs = {
     nix-ld = {
