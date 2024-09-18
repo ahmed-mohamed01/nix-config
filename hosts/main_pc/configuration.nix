@@ -59,6 +59,7 @@
     ulauncher
     
   ];
+  programs.firefox.enable = true;
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
@@ -77,28 +78,29 @@
   	description = "Ahmed User acc";
   	extraGroups = [ "networkmanager" "wheel" "docker" ];
   	packages = with pkgs; [	   # Install user packages. 
-       
+       kdePackages.kate
   	];
   };
 
 #----- System services ----------------------------------------------------------#
   services = {
-    openssh = {    # OpenSSH settings
-      enable = true;
-      settings = {
-        PermitRootLogin = "no";
-        PasswordAuthentication = false;
-        AllowUsers = [ "ahmed" "nixos" ];
-        };
-      };
+    # openssh = {    # OpenSSH settings
+    #   enable = true;
+    #   settings = {
+    #     PermitRootLogin = "no";
+    #     PasswordAuthentication = false;
+    #     AllowUsers = [ "ahmed" "nixos" ];
+    #     };
+    #   };
     tailscale.enable = true;    # Enable tailscale
+    xserver.enable = true;    # Enable the X11 windowing system. \You can disable this if you're only using the Wayland session.
     displayManager.sddm.enable = true;      # Enable the KDE Plasma Desktop Environment.
     desktopManager.plasma6.enable = true;
     xserver.xkb = {      # Configure keymap in X11
       layout = "gb";
       variant = "";
-      };
-    xserver.enable = true;    # Enable the X11 windowing system. \You can disable this if you're only using the Wayland session.
+    };
+    
   };
 
   virtualisation.docker = {
