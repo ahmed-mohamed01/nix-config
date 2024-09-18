@@ -1,14 +1,52 @@
-
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
-
 
 { config, lib, pkgs, ... }:
 
 {
   imports = [
-    #<home-manager/nixos>
+    ./hardware-configuration.nix
 
   ];
+# Bootloader.
+boot.loader.systemd-boot.enable = true;
+boot.loader.efi.canTouchEfiVariables = true;
+
+#----Networking-----------------------------------------------------------------#
+networking.hostName = "nixos"; # Define your hostname.
+# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+# Configure network proxy if necessary
+# networking.proxy.default = "http://user:password@proxy:port/";
+# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+networking.networkmanager.enable = true;    # Enable networking
+
+#-----Localization settings-----------------------------------------------------#
+time.timeZone = "Europe/London";            # Set your time zone.
+i18n.defaultLocale = "en_GB.UTF-8";         # Select internationalisation properties.
+
+i18n.extraLocaleSettings = {
+  LC_ADDRESS = "en_GB.UTF-8";
+  LC_IDENTIFICATION = "en_GB.UTF-8";
+  LC_MEASUREMENT = "en_GB.UTF-8";
+  LC_MONETARY = "en_GB.UTF-8";
+  LC_NAME = "en_GB.UTF-8";
+  LC_NUMERIC = "en_GB.UTF-8";
+  LC_PAPER = "en_GB.UTF-8";
+  LC_TELEPHONE = "en_GB.UTF-8";
+  LC_TIME = "en_GB.UTF-8";
+};
+# Enable sound with pipewire.
+hardware.pulseaudio.enable = false;
+security.rtkit.enable = true;
+services.pipewire = {
+  enable = true;
+  alsa.enable = true;
+  alsa.support32Bit = true;
+  pulse.enable = true;
+  # If you want to use JACK applications, uncomment this
+  #jack.enable = true;
+
 
 #----- Applications to be installed systemwide  ---------------------------------#
   environment.systemPackages = with pkgs; [
@@ -22,8 +60,17 @@
     ctop
     rm-improved
     speedtest-cli
+    1password-gui
+    1password
     
   ];
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    # Certain features, including CLI integration and system authentication support,
+    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
+    polkitPolicyOwners = [ "ahmed" ];
+  };
   
 #----- User settings ------------------------------------------------------------#
   programs.zsh.enable = true;    # Install ZSH so it cab be used as default shell

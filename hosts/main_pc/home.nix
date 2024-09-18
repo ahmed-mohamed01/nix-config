@@ -5,15 +5,15 @@
     #--- Import modules  # --------------------------------------------------------#       
     ../../modules/git.nix
     # modules/foot.nix
-    # ../../modules/kitty.nix
-    #../../modules/1passwd.nix
+     ../../modules/kitty.nix
+    ../../modules/1passwd.nix
     ../../modules/zsh.nix     # Also includes settings for bat, micro, fzf, eza etc
     # ../../modules/variables.nix
   ];
 
   #--- Basic home.manager settings  # ---------------------------------------------#
-  home.username = "demo";
-  home.homeDirectory = "/home/demo/";
+  home.username = "ahmed";
+  home.homeDirectory = "/home/ahmed/";
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   #--- Packages installed in this environment  # ----------------------------------#
