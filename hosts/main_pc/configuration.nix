@@ -15,10 +15,6 @@ boot.loader.efi.canTouchEfiVariables = true;
 networking.hostName = "nixos"; # Define your hostname.
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-# Configure network proxy if necessary
-# networking.proxy.default = "http://user:password@proxy:port/";
-# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
 networking.networkmanager.enable = true;    # Enable networking
 
 #-----Localization settings-----------------------------------------------------#
@@ -76,10 +72,6 @@ services.pipewire = {
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;  # Set ZSH as default shell
   
-  # users.users.nixos = {
-  #   #shell = pkgs.zsh;
-  #   extraGroups = [ "networkmanager" "wheel" "docker" ];  # Add user to additional groups
-  # };   
   users.users.ahmed = {
   	isNormalUser = true;
   	description = "Ahmed User acc";
@@ -90,25 +82,25 @@ services.pipewire = {
   };
 
 #----- System services ----------------------------------------------------------#
-  # services = {
-  #   openssh = {    # OpenSSH settings
-  #     enable = true;
-  #     settings = {
-  #       PermitRootLogin = "no";
-  #       PasswordAuthentication = false;
-  #       AllowUsers = [ "ahmed" "nixos" ];
-  #       };
-  #     };
-  #   tailscale.enable = true;    # Enable tailscale
+  services = {
+    openssh = {    # OpenSSH settings
+      enable = true;
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+        AllowUsers = [ "ahmed" "nixos" ];
+        };
+      };
+    tailscale.enable = true;    # Enable tailscale
 
-  # };
-  # virtualisation.docker = {
-  #     enable = true;   # Install docker
-  #     rootless ={
-  #       enable = true;   # Enable rootless docker
-  #       setSocketVariable = true;
-  #     };
-  # };
+  };
+  virtualisation.docker = {
+      enable = true;   # Install docker
+      rootless ={
+        enable = true;   # Enable rootless docker
+        setSocketVariable = true;
+      };
+  };
 
 #----- NixOS settings -----------------------------------------------------------#
   programs = {
@@ -119,6 +111,6 @@ services.pipewire = {
 
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];   # Enable flakes and Home-Manager
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05"; # Do not change this value
 }

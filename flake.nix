@@ -17,14 +17,15 @@
   outputs = { self, nixpkgs, unstable-nixpkgs, catppuccin, nixos-wsl, home-manager, ... }: 
   let
     lib = nixpkgs.lib;
+    nixpkgsConfig = { allowUnfree = true; };
     system = "x86_64-linux";    # Change this to "x86_64-darwin" for macOS
-    pkgs = import nixpkgs { inherit system; };
-    unstable-pkgs = import unstable-nixpkgs { inherit system; };
+    pkgs = import nixpkgs { inherit system; config = nixpkgsConfig; };
+    unstable-pkgs = import unstable-nixpkgs { inherit system; config = nixpkgsConfig; };
   in {
     # NixOS configuration entrypoint
     nixosConfigurations = {
       #---- NixOS-WSL configuration -------------------------------------------#
-      wsl = nixpkgs.lib.nixosSystem {    # Usage: 'nixos-rebuild --flake .#wsl'
+      wsl = lib.nixosSystem {    # Usage: 'nixos-rebuild --flake .#wsl'
         inherit system;
         modules = [
           nixos-wsl.nixosModules.default
@@ -85,7 +86,7 @@
           ];
         };
       main_pc = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        inherit unstable-pkgs;
         modules = [ 
           ./hosts/main_pc/home.nix   
           catppuccin.homeManagerModules.catppuccin

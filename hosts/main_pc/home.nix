@@ -9,6 +9,7 @@
     ../../modules/1password.nix
     ../../modules/zsh.nix     # Also includes settings for bat, micro, fzf, eza etc
     # ../../modules/variables.nix
+    ../../modules/ssh.nix 
   ];
 
   #--- Basic home.manager settings  # ---------------------------------------------#
