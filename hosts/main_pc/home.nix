@@ -19,7 +19,7 @@
   #--- Packages installed in this environment  # ----------------------------------#
   fonts.fontconfig.enable = true;             # Enables font installation
   home.packages = with pkgs; [
-    latte-dock
+    rm-improved
       curl
       (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Meslo" "JetBrainsMono" ]; })
   ];

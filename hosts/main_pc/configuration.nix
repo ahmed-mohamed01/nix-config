@@ -51,17 +51,16 @@ services.pipewire = {
 #----- Applications to be installed systemwide  ---------------------------------#
   environment.systemPackages = with pkgs; [
   	wget
-  	git
-  	curl
+    curl
+    micro
+    vscode
+    git
+    telegram-desktop
     home-manager
-    tailscale
-    zsh
-    htop
-    ctop
-    rm-improved
-    speedtest-cli
     _1password-gui
     _1password
+    pika-backup
+    ulauncher
     
   ];
   programs._1password.enable = true;
@@ -91,25 +90,25 @@ services.pipewire = {
   };
 
 #----- System services ----------------------------------------------------------#
-  services = {
-    openssh = {    # OpenSSH settings
-      enable = true;
-      settings = {
-        PermitRootLogin = "no";
-        PasswordAuthentication = false;
-        AllowUsers = [ "ahmed" "nixos" ];
-        };
-      };
-    tailscale.enable = true;    # Enable tailscale
+  # services = {
+  #   openssh = {    # OpenSSH settings
+  #     enable = true;
+  #     settings = {
+  #       PermitRootLogin = "no";
+  #       PasswordAuthentication = false;
+  #       AllowUsers = [ "ahmed" "nixos" ];
+  #       };
+  #     };
+  #   tailscale.enable = true;    # Enable tailscale
 
-  };
-  virtualisation.docker = {
-      enable = true;   # Install docker
-      rootless ={
-        enable = true;   # Enable rootless docker
-        setSocketVariable = true;
-      };
-  };
+  # };
+  # virtualisation.docker = {
+  #     enable = true;   # Install docker
+  #     rootless ={
+  #       enable = true;   # Enable rootless docker
+  #       setSocketVariable = true;
+  #     };
+  # };
 
 #----- NixOS settings -----------------------------------------------------------#
   programs = {
