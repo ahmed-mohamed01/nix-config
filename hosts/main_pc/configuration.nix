@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
 
   ];
-# Bootloader.
+ # Bootloader.
 boot.loader.systemd-boot.enable = true;
 boot.loader.efi.canTouchEfiVariables = true;
 
@@ -35,7 +35,7 @@ i18n.extraLocaleSettings = {
   LC_PAPER = "en_GB.UTF-8";
   LC_TELEPHONE = "en_GB.UTF-8";
   LC_TIME = "en_GB.UTF-8";
-};
+  };
 # Enable sound with pipewire.
 hardware.pulseaudio.enable = false;
 security.rtkit.enable = true;
@@ -46,7 +46,7 @@ services.pipewire = {
   pulse.enable = true;
   # If you want to use JACK applications, uncomment this
   #jack.enable = true;
-
+  };
 
 #----- Applications to be installed systemwide  ---------------------------------#
   environment.systemPackages = with pkgs; [
@@ -60,8 +60,8 @@ services.pipewire = {
     ctop
     rm-improved
     speedtest-cli
-    1password-gui
-    1password
+    _1password-gui
+    _1password
     
   ];
   programs._1password.enable = true;

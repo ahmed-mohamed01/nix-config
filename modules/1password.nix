@@ -29,7 +29,6 @@ in {
 
       user = {
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINRRRql59PulK2duyhpO2kxENi0/eZ1NhBGDgTVcf8ar"; };   #--- Add your signing key here
-      };
     };
   };
 }

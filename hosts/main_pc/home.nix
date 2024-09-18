@@ -5,8 +5,8 @@
     #--- Import modules  # --------------------------------------------------------#       
     ../../modules/git.nix
     # modules/foot.nix
-     ../../modules/kitty.nix
-    ../../modules/1passwd.nix
+     #../../modules/kitty.nix
+    ../../modules/1password.nix
     ../../modules/zsh.nix     # Also includes settings for bat, micro, fzf, eza etc
     # ../../modules/variables.nix
   ];
@@ -29,7 +29,7 @@
     
   };
   # Let Home Manager install and manage itself.
-  nixpkgs.config.allowUnfree = true;
+  
   programs.home-manager.enable = true; 
 
 }
