@@ -21,8 +21,10 @@
   fonts.fontconfig.enable = true;             # Enables font installation
   home.packages = with pkgs; [
     rm-improved
-      curl
-      (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Meslo" "JetBrainsMono" ]; })
+    lazygit
+    lazydocker
+    curl
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Meslo" "JetBrainsMono" ]; })
   ];
   
   #--- Dotfile management  & misc symlinks # --------------------------------------#
