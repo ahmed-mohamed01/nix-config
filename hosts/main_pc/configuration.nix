@@ -94,7 +94,11 @@
     ulauncher
     remmina
     cifs-utils
-
+    fastfetch
+    neofetch
+    htop
+    #libsForQt5.qtstyleplugin-kvantum   # Kvantum theme engine
+    kdePackages.qtstyleplugin-kvantum
   ];
   
   programs._1password.enable = true;

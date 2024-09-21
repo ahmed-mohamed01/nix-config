@@ -29,10 +29,11 @@
       enable_audio_bell = false;
       mouse_hide_wait = "-1.0";
       window_padding_width = 5;
+
       # Tab bar settings
       tab_bar_style = "powerline";
-      tab_bar_edge = "top";
-      tab_bar_font_size = 12;
+      tab_bar_edge = "bottom";
+      tab_bar_font_size = 14;
       # tab_bar_background = "#1E1E2E";
       # tab_bar_foreground = "#CDD6F4";
       tab_bar_font_family = "FiraCode Nerd Font";
@@ -41,16 +42,13 @@
       tab_bar_min_tabs = 0;
       tab_switch_strategy = "previous";
       tab_powerline_style = "slanted";
-      # map = {
-      #   "ctrl+c copy_to_clipboard";
-      #   "ctrl+v paste_from_clipboard";
-      # };
+
       copy_on_select = "yes";
       strip_trailing_spaces = "smart";
 
       # SSH settings
-      remote_kitty = "if-needed";
-      share_connections = "yes";
+      #remote_kitty = "if-needed";
+      #share_connections = "yes";
       
     };
     extraConfig = ''
