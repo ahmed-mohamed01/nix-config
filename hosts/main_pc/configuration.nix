@@ -9,11 +9,19 @@
 
 #----- Basic system settings -----------------------------------------------------------------------#
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      device = "nodev";
+      useOSProber = true;
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
-
+  time.hardwareClockInLocalTime = true;
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -99,6 +107,7 @@
     htop
     #libsForQt5.qtstyleplugin-kvantum   # Kvantum theme engine
     kdePackages.qtstyleplugin-kvantum
+    os-prober
   ];
   
   programs._1password.enable = true;
