@@ -49,7 +49,7 @@
       };
     };
   # 
-    # Available through 'home-manager --flake .#your-username@your-hostname'
+    # Available through 'home-manager switch --flake .#your-username@your-hostname'
     homeConfigurations = {
     #---- WSL Home manager configuration --------------------------------------#
       wsl = home-manager.lib.homeManagerConfiguration {

@@ -4,17 +4,18 @@
 #----- Include modules ------------------------------------------------------#
   imports = [    # comment out what you don't need
     ../../modules/wsl/git.nix    # Enable git and set defaults
+    ../../modules/ssh.nix      # Enanble ssh settings
     ../../modules/zsh.nix      # Enable zsh and set defaults
     ../../modules/fonts.nix     # Enable nerd fonts
     ../../modules/direnv.nix    # Enable direnv and set defaults
-    ../../modules/kitty.nix    # Enable kitty and set defaults
-    ../../modules/foot.nix    # Enable foot and set defaults
+    #../../modules/kitty.nix    # Enable kitty and set defaults
+    #../../modules/foot.nix    # Enable foot and set defaults
   ];
 
 #----- Basic home settings --------------------------------------------------#
   home = {
-    username = "nixos";
-    homeDirectory = "/home/nixos";
+    username = "ahmed";
+    homeDirectory = "/home/ahmed";
     stateVersion = "24.05"; # Please read the comment before changing.
 
 #----- Installed programs ---------------------------------------------------#

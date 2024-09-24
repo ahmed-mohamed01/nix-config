@@ -7,13 +7,14 @@
 
 {
   imports = [
-    #<nixos-wsl/modules>    # include NixOS-WSL modules
+    <nixos-wsl/modules>    # include NixOS-WSL modules
     #<home-manager/nixos>
 
   ];
 #----- WSL settings -------------------------------------------------------------#
   wsl.enable = true;
-  wsl.defaultUser = "nixos";
+  wsl.defaultUser = "ahmed";
+  networking.hostName = "nixos-wsl"; # Define your hostname.
   #wsl.docker-desktop.enable = true;
 
 #----- Applications to be installed systemwide  ---------------------------------#
