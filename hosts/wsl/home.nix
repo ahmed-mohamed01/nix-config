@@ -14,8 +14,8 @@
 
 #----- Basic home settings --------------------------------------------------#
   home = {
-    username = "ahmed";
-    homeDirectory = "/home/ahmed";
+    username = "nixos";
+    homeDirectory = "/home/nixos";
     stateVersion = "24.05"; # Please read the comment before changing.
 
 #----- Installed programs ---------------------------------------------------#

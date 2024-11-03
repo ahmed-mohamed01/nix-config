@@ -7,13 +7,13 @@
 
 {
   imports = [
-    <nixos-wsl/modules>    # include NixOS-WSL modules
+    #<nixos-wsl/modules>    # include NixOS-WSL modules
     #<home-manager/nixos>
 
   ];
 #----- WSL settings -------------------------------------------------------------#
   wsl.enable = true;
-  wsl.defaultUser = "ahmed";
+  wsl.defaultUser = "nixos";
   networking.hostName = "nixos-wsl"; # Define your hostname.
   #wsl.docker-desktop.enable = true;
 
@@ -29,6 +29,8 @@
     ctop
     rm-improved
     speedtest-cli
+    nmap
+    mtr
     
   ];
   
@@ -36,14 +38,16 @@
   programs.zsh.enable = true;    # Install ZSH so it cab be used as default shell
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;  # Set ZSH as default shell
-  
+  #users.groups.norm.gid = 1002;
   users.users.nixos = {
     #shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "docker" ];  # Add user to additional groups
   };   
   users.users.ahmed = {
   	isNormalUser = true;
+    #group = "norm"
   	description = "Ahmed User acc";
+    hashedPassword = "$y$j9T$XcCSSmXlX3VngpxBz/0JW/$tUgmZH9kWGWbCgk4a7meLpz1jDd8G38k.yOVfxp5ofB";
   	extraGroups = [ "networkmanager" "wheel" "docker" ];
   	packages = with pkgs; [	   # Install user packages. 
        
