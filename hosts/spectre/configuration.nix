@@ -109,7 +109,7 @@
       };
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];   # Enable flakes and Home-Manager
-  nixpkgs.config.allowUnfree = true;   # Allow paid/closed source software
-  system.stateVersion = "24.05";  # Do not change this option.
+  # Allow paid/closed source software
+  system.stateVersion = "24.11";  # Do not change this option.
 
 }
