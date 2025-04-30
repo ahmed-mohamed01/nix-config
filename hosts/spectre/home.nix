@@ -7,13 +7,14 @@
     ../../modules/zsh.nix      # Enable zsh and set defaults
     ../../modules/fonts.nix     # Enable nerd fonts
     ../../modules/direnv.nix    # Enable direnv and set defaults
+    ../../modules/kitty.nix
   ];
 
 #----- Basic home settings --------------------------------------------------#
   home = {
     username = "ahmed";
     homeDirectory = "/home/ahmed";
-    stateVersion = "24.05"; # Please read the comment before changing.
+    stateVersion = "24.11"; # Please read the comment before changing.
 
 #----- Installed programs ---------------------------------------------------#
     packages = with pkgs; [     
@@ -25,6 +26,8 @@
       neofetch
       mc
       ripgrep
+      vscode
+
     ];
 
   };
