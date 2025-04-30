@@ -11,13 +11,14 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     catppuccin.url = "github:catppuccin/nix";
-    };    
-  
+  };
 
   outputs = { self, nixpkgs, unstable-nixpkgs, catppuccin, nixos-wsl, home-manager, ... }: 
   let
+    nixpkgsConfig = {
+      allowUnfree = true; # Allow unfree packages globally
+    };
     lib = nixpkgs.lib;
-    nixpkgsConfig = { allowUnfree = true; };
     system = "x86_64-linux";    # Change this to "x86_64-darwin" for macOS
     pkgs = import nixpkgs { inherit system; config = nixpkgsConfig; };
     unstable-pkgs = import unstable-nixpkgs { inherit system; config = nixpkgsConfig; };
